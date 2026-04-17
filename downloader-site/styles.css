@@ -1,0 +1,596 @@
+:root {
+  --bg: #040811;
+  --panel: rgba(8, 14, 25, 0.62);
+  --panel-strong: rgba(10, 18, 31, 0.78);
+  --border: rgba(255, 255, 255, 0.12);
+  --text: #edf4ff;
+  --muted: #9fb1ca;
+  --cyan: #68e8ff;
+  --mint: #6cffb7;
+  --amber: #ffbd74;
+  --rose: #ff667f;
+  --shadow: 0 40px 120px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+body::before {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 90%);
+}
+
+body::after {
+  background: linear-gradient(180deg, rgba(4, 8, 17, 0.15), rgba(4, 8, 17, 0.82));
+}
+
+.backdrop,
+.ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.backdrop {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(104, 232, 255, 0.18), transparent 18%),
+    radial-gradient(circle at 78% 20%, rgba(108, 255, 183, 0.16), transparent 16%),
+    radial-gradient(circle at 75% 76%, rgba(255, 102, 127, 0.15), transparent 18%),
+    linear-gradient(rgba(4, 8, 17, 0.28), rgba(4, 8, 17, 0.88)),
+    url("./assets/sentracore-backdrop.svg") center/cover no-repeat;
+  z-index: -3;
+}
+
+.ambient {
+  filter: blur(60px);
+  opacity: 0.7;
+  z-index: -2;
+}
+
+.ambient-a {
+  background: radial-gradient(circle at center, rgba(104, 232, 255, 0.22), transparent 55%);
+  transform: translate(-12%, -8%);
+}
+
+.ambient-b {
+  background: radial-gradient(circle at center, rgba(108, 255, 183, 0.18), transparent 58%);
+  transform: translate(18%, -22%);
+}
+
+.ambient-c {
+  background: radial-gradient(circle at center, rgba(255, 102, 127, 0.18), transparent 58%);
+  transform: translate(24%, 20%);
+}
+
+.topbar,
+main,
+.footer {
+  width: min(1600px, calc(100vw - 48px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0 14px;
+}
+
+.brand,
+.top-actions {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  gap: 16px;
+}
+
+.brand img {
+  width: 62px;
+  height: 62px;
+  border-radius: 20px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.brand p,
+.brand span,
+.eyebrow,
+.section-kicker {
+  margin: 0;
+}
+
+.brand p {
+  font-family: "Sora", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.brand span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.top-actions {
+  gap: 12px;
+}
+
+.ghost-button,
+.primary-button,
+.secondary-button,
+.download-card {
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, filter 180ms ease, background 180ms ease;
+}
+
+.ghost-button,
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.ghost-button {
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ghost-button.accent {
+  background: rgba(104, 232, 255, 0.12);
+}
+
+.primary-button {
+  color: #071018;
+  background: linear-gradient(135deg, var(--cyan), var(--mint));
+  box-shadow: 0 18px 50px rgba(104, 232, 255, 0.28);
+}
+
+.secondary-button {
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ghost-button:hover,
+.primary-button:hover,
+.secondary-button:hover,
+.download-card:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.04);
+}
+
+main {
+  display: grid;
+  gap: 26px;
+  padding-bottom: 52px;
+}
+
+.hero,
+.ribbon,
+.feature-grid,
+.manifest-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.hero {
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  align-items: stretch;
+  padding-top: 28px;
+}
+
+.hero-copy,
+.glass-card,
+.ribbon,
+.download-card {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
+
+.hero-copy,
+.glass-card,
+.ribbon {
+  background: var(--panel);
+}
+
+.hero-copy {
+  border-radius: 42px;
+  padding: 58px;
+}
+
+.eyebrow,
+.section-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.36em;
+  font-size: 0.76rem;
+  color: var(--cyan);
+}
+
+h1,
+h2 {
+  margin: 16px 0 0;
+  line-height: 0.96;
+  font-family: "Sora", sans-serif;
+}
+
+h1 {
+  font-size: clamp(3.3rem, 6vw, 6.6rem);
+  max-width: 11ch;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 3vw, 3rem);
+}
+
+.lede,
+.panel-note {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.lede {
+  max-width: 63ch;
+  margin: 26px 0 0;
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.meta-strip,
+.ribbon-grid,
+.download-grid,
+.manifest-grid,
+.feature-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.meta-strip {
+  display: grid;
+  gap: 16px;
+  margin-top: 38px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.meta-strip article,
+.ribbon-card,
+.manifest-list div,
+.status-stack div {
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 18px;
+}
+
+.meta-strip strong,
+.ribbon-card strong,
+.manifest-list strong,
+.status-stack strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.meta-strip span,
+.ribbon-card span,
+.manifest-list span,
+.status-stack span {
+  color: var(--muted);
+}
+
+.hero-stage {
+  display: grid;
+  gap: 18px;
+}
+
+.signal-shell {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: 42px;
+  border: 1px solid rgba(104, 232, 255, 0.18);
+  background: linear-gradient(180deg, rgba(8, 16, 30, 0.78), rgba(8, 13, 24, 0.62));
+  box-shadow: var(--shadow);
+}
+
+.signal-ring,
+.signal-core {
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.signal-ring {
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.signal-ring-a {
+  width: 72%;
+  height: 72%;
+  box-shadow: 0 0 80px rgba(104, 232, 255, 0.18);
+}
+
+.signal-ring-b {
+  width: 48%;
+  height: 48%;
+  border-color: rgba(108, 255, 183, 0.24);
+}
+
+.signal-core {
+  width: min(360px, 74%);
+  padding: 34px;
+  border-radius: 28px;
+  background: rgba(6, 14, 23, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(104, 232, 255, 0.06);
+}
+
+.signal-core span,
+.telemetry-grid span {
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.72rem;
+}
+
+.signal-core strong {
+  display: block;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  margin: 16px 0 12px;
+}
+
+.signal-core p,
+.telemetry-grid strong,
+.feature-list,
+.steps,
+.download-card span,
+.footer span {
+  color: var(--muted);
+}
+
+.signal-core p {
+  line-height: 1.75;
+  margin: 0;
+}
+
+.telemetry-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.glass-card {
+  border-radius: 32px;
+  padding: 28px;
+}
+
+.pulse-card {
+  background:
+    radial-gradient(circle at top right, rgba(104, 232, 255, 0.12), transparent 38%),
+    linear-gradient(180deg, rgba(10, 19, 31, 0.76), rgba(7, 12, 21, 0.58));
+}
+
+.telemetry-grid strong {
+  display: block;
+  margin-top: 12px;
+  line-height: 1.55;
+}
+
+.ribbon {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  border-radius: 36px;
+  padding: 32px;
+}
+
+.ribbon-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.feature-grid,
+.manifest-grid {
+  display: grid;
+}
+
+.feature-card,
+.manifest-card,
+.status-card {
+  min-height: 100%;
+}
+
+.feature-list,
+.steps {
+  margin: 22px 0 0;
+  padding-left: 22px;
+  line-height: 1.9;
+}
+
+.downloads-panel {
+  margin-top: 2px;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.panel-note {
+  max-width: 42ch;
+  text-align: right;
+}
+
+.download-grid {
+  display: grid;
+  gap: 18px;
+  margin-top: 26px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 220px;
+  padding: 24px;
+  border-radius: 28px;
+  color: var(--text);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    linear-gradient(145deg, rgba(104, 232, 255, 0.1), rgba(255, 102, 127, 0.08));
+}
+
+.download-card.featured {
+  background:
+    radial-gradient(circle at top right, rgba(108, 255, 183, 0.18), transparent 38%),
+    linear-gradient(145deg, rgba(104, 232, 255, 0.16), rgba(255, 102, 127, 0.12));
+}
+
+.download-card strong {
+  font-family: "Sora", sans-serif;
+  font-size: 1.12rem;
+}
+
+.download-card em {
+  margin-top: auto;
+  color: var(--amber);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.72rem;
+}
+
+.manifest-list,
+.status-stack {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+code {
+  color: var(--mint);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 36px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1240px) {
+  .hero,
+  .ribbon,
+  .feature-grid,
+  .manifest-grid,
+  .download-grid,
+  .ribbon-grid,
+  .meta-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-heading,
+  .footer {
+    display: grid;
+    gap: 12px;
+  }
+
+  .panel-note {
+    text-align: left;
+  }
+}
+
+@media (max-width: 780px) {
+  .topbar,
+  main,
+  .footer {
+    width: min(100vw - 28px, 1600px);
+  }
+
+  .topbar {
+    display: grid;
+    gap: 16px;
+  }
+
+  .top-actions,
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-copy,
+  .glass-card,
+  .ribbon,
+  .signal-shell,
+  .download-card {
+    border-radius: 24px;
+  }
+
+  .hero-copy,
+  .glass-card,
+  .ribbon {
+    padding: 24px;
+  }
+
+  .signal-shell {
+    min-height: 340px;
+  }
+}

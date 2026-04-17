@@ -1,0 +1,19 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shield" x1="92" y1="72" x2="420" y2="444" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#65E8FF"/>
+      <stop offset="0.5" stop-color="#6DFFB0"/>
+      <stop offset="1" stop-color="#F85D7A"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256 198) rotate(90) scale(212)">
+      <stop stop-color="#65E8FF" stop-opacity="0.45"/>
+      <stop offset="0.55" stop-color="#6DFFB0" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#070A11" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="#05070D"/>
+  <circle cx="256" cy="198" r="212" fill="url(#halo)"/>
+  <path d="M256 62L392 116V238C392 330 341 412 256 452C171 412 120 330 120 238V116L256 62Z" fill="url(#shield)" fill-opacity="0.11" stroke="url(#shield)" stroke-width="18"/>
+  <path d="M166 160L222 160L256 204L290 160L346 160L286 238L352 332L296 332L256 278L216 332L160 332L226 238L166 160Z" fill="url(#shield)"/>
+  <path d="M136 396H376" stroke="#65E8FF" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+</svg>
