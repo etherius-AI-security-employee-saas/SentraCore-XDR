@@ -3,9 +3,29 @@
 ## Fastest path
 
 1. Download `Setup SentraCore XDR.cmd`
-2. Run it to bootstrap the repo into `%USERPROFILE%\SentraCore XDR`
-3. Let the local setup finish dependency installation
-4. Use `Launch SentraCore XDR.cmd` to open the platform
+2. Run it to extract the repo into `%USERPROFILE%\SentraCore XDR`
+3. Let setup install the dependencies
+4. Setup starts the GUI automatically
+5. If you close it later, use `Launch SentraCore XDR.cmd`
+
+The GUI opens at `http://127.0.0.1:5173`.
+
+## What you get
+
+- browser-based GUI dashboard
+- backend API
+- AI engine
+- launch and stop scripts
+- local logs folder for troubleshooting
+
+## Main features
+
+- risk score dashboard
+- critical alert board
+- user risk ranking
+- threat intelligence surface
+- attack replay timeline
+- explainable AI insights
 
 ## If you want the artifact bundle
 
