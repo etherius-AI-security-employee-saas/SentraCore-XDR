@@ -2,6 +2,12 @@
 
 SentraCore XDR is a premium cybersecurity SaaS platform built around the human attack surface: phishing, credential theft, insider misuse, adaptive risk, deception triggers, and explainable AI-driven response.
 
+## Live launch links
+
+- [Etherius product page](https://etherius-security-site.vercel.app/sentracore)
+- [Etherius download hub](https://etherius-security-site.vercel.app/download#sentracore)
+- [Standalone download site](https://downloader-site-three.vercel.app)
+
 ## What is in this repo
 
 - `backend/`
