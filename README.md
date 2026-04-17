@@ -44,6 +44,7 @@ Then open `http://127.0.0.1:5173`.
 ## Docs
 
 - [User setup](docs/user-setup.md)
+- [Dashboard tutorial](docs/dashboard-tutorial.md)
 - [Handover manual](docs/handover.md)
 - [Architecture](docs/architecture.md)
 - [API](docs/api.md)
