@@ -15,7 +15,8 @@ SentraCore XDR is prepared as separate deployable units:
 2. Run `Release SentraCore XDR to Vercel.cmd`
 3. Paste the AI Engine deployment URL when prompted
 4. Paste the Gateway deployment URL when prompted
-5. Let the script deploy the downloader website from `downloader-site/`
+5. Paste the Frontend deployment URL when prompted so backend CORS can be refreshed
+6. Let the script redeploy the backend with frontend CORS and then deploy the downloader website
 
 ## Important runtime note
 

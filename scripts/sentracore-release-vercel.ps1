@@ -41,7 +41,8 @@ if ([string]::IsNullOrWhiteSpace($aiUrl)) {
 Set-SentraCoreEnvFile -Path "$root\backend\.env" -Lines @(
   "AI_ENGINE_URL=$aiUrl",
   "DEMO_STREAMING_ENABLED=false",
-  "STREAM_PROCESSING_MODE=synchronous"
+  "STREAM_PROCESSING_MODE=synchronous",
+  "ENVIRONMENT=production"
 )
 
 Invoke-SentraCoreVercelDeploy -Name "Gateway" -Directory "$root\backend"
@@ -56,6 +57,20 @@ Set-SentraCoreEnvFile -Path "$root\frontend\.env.production" -Lines @(
 )
 
 Invoke-SentraCoreVercelDeploy -Name "Frontend" -Directory "$root\frontend"
+
+$frontendUrl = Read-Host "Paste the deployed Frontend URL (example: https://your-sentracore-frontend.vercel.app)"
+if ([string]::IsNullOrWhiteSpace($frontendUrl)) {
+  throw "Frontend URL is required to finalize backend CORS settings."
+}
+Set-SentraCoreEnvFile -Path "$root\backend\.env" -Lines @(
+  "AI_ENGINE_URL=$aiUrl",
+  "DEMO_STREAMING_ENABLED=false",
+  "STREAM_PROCESSING_MODE=synchronous",
+  "ENVIRONMENT=production",
+  "CORS_ORIGINS=[`"$frontendUrl`"]"
+)
+
+Invoke-SentraCoreVercelDeploy -Name "Gateway (CORS refresh)" -Directory "$root\backend"
 Invoke-SentraCoreVercelDeploy -Name "Downloader Web" -Directory "$root\downloader-site"
 
 Write-Host ""
